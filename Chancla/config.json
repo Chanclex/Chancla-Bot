@@ -1,5 +1,4 @@
 {
-  //En token del bot solo colocar el token que les dá discord cuando crean su bot
 "token":"token del bot",
 "prefix":"."
 
