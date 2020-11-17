@@ -90,7 +90,18 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   
-              if(message.content.indexOf(prefix) !== 0) return;
+ if(command === 'raid'){
+    message.channel.send(`**${message.author.username}**` + ' Este comando no existe, soy un bot pacífico, ¿Por qué querrías que raidee?')
+    const embed = new Discord.MessageEmbed()
+      .setTitle('El baile del trolleo')
+       .setImage("https://i.imgur.com/4cuaEoo.gif")
+       .setFooter(`XD`)
+       .setColor('Blue')
+      setTimeout(function()
+{message.author.send({ embed })}, 5000);
+  };
+  
+      if(message.content.indexOf(prefix) !== 0) return;
 if(command === 'amo'){
   let mencion = message.mentions.users.first();
 if(!mencion) return message.reply(`We, no mencionaste a nadie a quien amar, entonces no amas a nadie pinche antisocial`);
@@ -134,7 +145,7 @@ if (command === 'piropo') {
           
           const embed = new Discord.MessageEmbed()
           
-      .setTitle('**Conquisto diez chicas a la semana, ¿Quieres un consejo amoroso?**', )
+      .setTitle('**Conquisto diez chicas a la semana, ¿Quieres un consejo amoroso?**')
       .setAuthor(message.author.username, message.author.displayAvatarURL())
       .addField("*Aquí un piropo para la chica que quieres conquistar 7u7:*", "=======>")
       .addField((texto), ":heart:")
@@ -142,6 +153,10 @@ if (command === 'piropo') {
       .setColor('PURPLE');
 
   message.channel.send(embed)
+};
+              if(message.content.indexOf(prefix) !== 0) return;
+if (command === 'XD') {
+  //Comando en mantenimiento
 };
 
 //monigote
@@ -249,8 +264,8 @@ if(command === 'comandos') {
   .setThumbnail(server.iconURL)
   .setAuthor(server.name, server.iconURL)
   .addField("♦️Comandos informativos", "`.comandos`, `.miserver`, `.avatar`, `.invite`")
-  .addField("♦️Comandos divertidos", "`.monigote`, `.vaca + (texto)`, `.say + (texto)`,`.amo`, `.nostradamus + (texto)`, `.piropo`")
-  .addField("♦️Comandos de admins", "`.kickear`, `.ban`, `.borrar`")
+  .addField("♦️Comandos divertidos", "`.monigote`, `.vaca + (texto)`, `.say + (texto)`,`.amo`, `.nostradamus + (texto)`, `.piropo`, `.XD`")
+  .addField("♦️Comandos de admins", "`.kick`, `.ban`, `.borrar`, `.raid`")
   .setFooter("Chancla Bot, versión 1.0, creado por ! Chancla#9149 y TrollfesT#2552")
   .setColor(0x66b3ff)
   
@@ -297,7 +312,7 @@ message.channel.send(`**${mencionado.username}**, le metieron un martillazo y lo
 
 //Comando para kickear
             if(message.content.indexOf(prefix) !== 0) return;
-if(command === 'kickear') {
+if(command === 'kick') {
 
   let permiso = message.member.hasPermission("KICK_MEMBERS");
   let mencionado = message.mentions.users.first();
@@ -320,19 +335,18 @@ message.channel.send(`**${mencionado.username}**, le metieron una patada y lo ma
             if(message.content.indexOf(prefix) !== 0) return;
 if(command === 'miserver') {
 var server = message.guild;
-
+  
 const embed = new Discord.MessageEmbed()
-
 .setThumbnail(server.iconURL())
 .setAuthor(server.name, server.iconURL())
-.addField('Mi ID es', server.id, true)
-.addField('Fuí creado el', server.joinedAt.toDateString(), true)
-.addField('Mi creador es', server.owner.user.tag, true)
+.addField('ID del server', server.id, true)
+.addField('Region', server.region, true)
+.addField('Creado el', server.joinedAt.toDateString(), true)
+.addField('Dueño del Servidor', server.owner.user.tag, true)
 .addField('Miembros', server.memberCount, true)
 .setFooter("Chancla Bot, versión 1.0, creado por ! Chancla#9149 y TrollfesT#2552")
 .setColor(0x66b3ff);
 
 message.channel.send(embed);
-
 }
 });
