@@ -63,7 +63,7 @@ client.on("ready", () => {
 
   client.user.setPresence( {
       activity: {
-          name: `todo lo que hacen y dicen (Modo unión soviética)👀`,
+          name: `Comandos, Prefijo c. ¡usa c.comandos y mira todo lo que puedo hacer!`,
           type: "LISTENING"
       },
       status: "online"
@@ -90,21 +90,11 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
   
- if(command === 'raid'){
-    message.channel.send(`**${message.author.username}**` + ' Este comando no existe, soy un bot pacífico, ¿Por qué querrías que raidee?')
-    const embed = new Discord.MessageEmbed()
-      .setTitle('El baile del trolleo')
-       .setImage("https://i.imgur.com/4cuaEoo.gif")
-       .setFooter(`XD`)
-       .setColor('Blue')
-      setTimeout(function()
-{message.author.send({ embed })}, 5000);
-  };
-  
-      if(message.content.indexOf(prefix) !== 0) return;
+                if(message.content.indexOf(prefix) !== 0) return;
 if(command === 'amo'){
   let mencion = message.mentions.users.first();
 if(!mencion) return message.reply(`We, no mencionaste a nadie a quien amar, entonces no amas a nadie pinche antisocial`);
+  
   
   	const canvas = Canvas.createCanvas(474, 594);
 	const ctx = canvas.getContext('2d');
@@ -129,7 +119,28 @@ const embed = new Discord.MessageEmbed()
 
 message.channel.send(embed);
 }
-});
+  //Comando para kickear
+  if(command === 'ping') {
+    let ping = Math.floor(message.client.ping);
+    message.channel.send(":ping_pong: Pong!")
+    .then(m => {
+        
+        m.edit(`:incoming_envelope: Ping Mensajes: \`${Math.floor(m.createdTimestamp - Date.now())} ms\`\n:satellite_orbital: Ping DiscordAPI: \`${ping} ms\``);
+   }
+          )};
+  
+                  if(message.content.indexOf(prefix) !== 0) return;
+ if(command === 'raid'){
+    message.channel.send(`**${message.author.username}**` + ' Este comando no existe, soy un bot pacífico, ¿Por qué querrías que raidee?')
+    const embed = new Discord.MessageEmbed()
+      .setTitle('El baile del trolleo')
+       .setImage("https://i.imgur.com/4cuaEoo.gif")
+       .setFooter(`XD`)
+       .setColor('Blue')
+      setTimeout(function()
+{message.author.send({ embed })}, 5000);
+  };
+  });
 
 client.on('message', message => {
     if(message.author.bot) return;
@@ -154,9 +165,42 @@ if (command === 'piropo') {
 
   message.channel.send(embed)
 };
+  //Muestra un XD
               if(message.content.indexOf(prefix) !== 0) return;
-if (command === 'XD') {
-  //Comando en mantenimiento
+if (command === 'xd') {
+let xd = [
+  'https://i.imgur.com/zZqvhol.jpg',
+  'https://i.imgur.com/hvRT1V3.jpg',
+  'https://i.imgur.com/nzpflQL.jpg',
+  'https://i.imgur.com/Z2V1I6n.jpg',
+  'https://i.imgur.com/FTlRUsV.jpg',
+  'https://i.imgur.com/e8rEtzY.jpg',
+  'https://i.imgur.com/CX50XBh.jpg',
+  'https://i.imgur.com/RMlkItC.jpg',
+  'https://i.imgur.com/0G8Ynz1.jpg',
+  'https://i.imgur.com/hT0uRLL.jpg',
+  'https://i.imgur.com/bXinUYz.jpg',
+  'https://i.imgur.com/4TqPY4S.jpg',
+  'https://i.imgur.com/MCTxyyT.jpg',
+  'https://i.imgur.com/lLjWIXt.jpg',
+  'https://i.imgur.com/Wfzi5vI.jpg',
+  'https://i.imgur.com/NUy9K6Z.jpg',
+  'https://i.imgur.com/C8qZuOp.jpg',
+  'https://i.imgur.com/R4vf8Gd.jpg',
+  'https://i.imgur.com/Jm9Evfj.jpg',
+  'https://i.imgur.com/I8dStyQ.jpg',
+  'https://i.imgur.com/COfMDoZ.jpg']
+
+const random = xd[Math.floor(Math.random() * xd.length)]
+0
+const embed = new Discord.MessageEmbed()
+  .setTitle('XD')
+  .setAuthor(message.author.username)
+  .setImage(random)
+  .setColor('RED')
+  .setTimestamp();
+  
+  message.channel.send(embed);
 };
 
 //monigote
@@ -197,7 +241,7 @@ if(command === 'vaca'){
 message.channel.send(args.join(" "));
   };
   
-//Comando para ver el avatar
+//Comando para pregunta
             if(message.content.indexOf(prefix) !== 0) return;
   if (command === 'nostradamus') {
         message.delete();
@@ -262,10 +306,12 @@ if(command === 'comandos') {
   const embed = new Discord.MessageEmbed()
 
   .setThumbnail(server.iconURL)
-  .setAuthor(server.name, server.iconURL)
-  .addField("♦️Comandos informativos", "`.comandos`, `.miserver`, `.avatar`, `.invite`")
-  .addField("♦️Comandos divertidos", "`.monigote`, `.vaca + (texto)`, `.say + (texto)`,`.amo`, `.nostradamus + (texto)`, `.piropo`, `.XD`")
-  .addField("♦️Comandos de admins", "`.kick`, `.ban`, `.borrar`, `.raid`")
+  .setAuthor(server.name)
+  .setTitle("<:Discord:778804236733513749> Discord")
+  .addField("<a:flecha:779126790312296469> *MI PREFIJO:* <a:flecha2:779127569073045535>", '```C. ```')
+  .addField("<a:palomitas:778803320210063431>♦️Comandos informativos", "`comandos`, `miserver`, `avatar`, `invite`, `ping`")
+  .addField("<a:divertido:778803677238132736>♦️Comandos divertidos", "`monigote`, `vaca + (texto)`, `say + (texto)`,`amo`, `nostradamus + (texto)`, `piropo`, `xd`")
+  .addField("<a:admin:778803282457264128>♦️Comandos de admins", "`kick`, `ban`, `raid`, `usuario`")
   .setFooter("Chancla Bot, versión 1.0, creado por ! Chancla#9149 y TrollfesT#2552")
   .setColor(0x66b3ff)
   
@@ -273,21 +319,6 @@ if(command === 'comandos') {
 message.author.send(embed);
 
 };
-
-//comando para borrar mensajes
-  if(command === 'borrar'){
-    message.delete()
-                let cantidad = parseInt(args[0])
-if(!message.member.permissionsIn(message.channel).has('MANAGE_MESSAGES')){
-  return message.channel.send('Perdon, pero no tienes permisos')
-}
-
-if(cantidad > 100){
-  message.channel.send('Solo puedo borrar un máximo de 100 mensajes')
-  cantidad = 100
-}
-
-  };
 
   //Comando para banear
             if(message.content.indexOf(prefix) !== 0) return;
@@ -310,7 +341,7 @@ message.channel.send(`**${mencionado.username}**, le metieron un martillazo y lo
 
 };
 
-//Comando para kickear
+
             if(message.content.indexOf(prefix) !== 0) return;
 if(command === 'kick') {
 
@@ -330,7 +361,37 @@ message.guild.member(mencionado).kick(razon);
 message.channel.send(`**${mencionado.username}**, le metieron una patada y lo mandaron a otro mundo, razón: ${razon}.`);
 
 };
+//Datos de usuario
+              if(message.content.indexOf(prefix) !== 0) return;
+if(command === 'usuario') {
+        let mencion = message.mentions.users.first()
 
+        if (!mencion){
+                var user = message.author;
+  const embed = new Discord.MessageEmbed()
+.setThumbnail(user.AvatarURL())
+.setAuthor(user.username+'#'+user.discriminator, )
+.addField('ID del usuario', user.id, true)
+.addField('Region', user.region, true)
+.addField('Cuenta creada en la fecha:', user.joinedAt.toDateString(), true)
+.setFooter("Chancla Bot, versión 1.0, creado por ! Chancla#9149 y TrollfesT#2552")
+.setColor(0x66b3ff);
+
+      message.channel.send(embed);
+} else {
+const embed = new Discord.MessageEmbed()
+.setThumbnail(message.author.displayAvatarURL())
+.setAuthor(mencion.username)
+.addField('ID del usuario', mencion.id, true)
+.addField('Region', mencion.region, true)
+.addField('Creado el', mencion.joinedAt.toDateString(), true)
+.setFooter("Chancla Bot, versión 1.0, creado por ! Chancla#9149 y TrollfesT#2552")
+.setColor(0x66b3ff);
+
+message.channel.send(embed);
+}
+};
+  
 //Datos del servidor
             if(message.content.indexOf(prefix) !== 0) return;
 if(command === 'miserver') {
