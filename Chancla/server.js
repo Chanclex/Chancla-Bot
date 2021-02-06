@@ -12,9 +12,10 @@
 //Token del bot
 const Discord = require('discord.js');
 const Canvas = require('canvas');
-const client = new Discord.Client();
+const client = new Discord.Client({ ws: { intents: 32767 } });
 const MessageAttachement = require("discord.js");
 const config = require("./config.json");
+
 const colores = {
   hexLiteral: 0xffffff, 
   hexString: 'ffffff',
@@ -61,15 +62,22 @@ client.on("ready", () => {
   console.log(`Estoy encendido we, 
            conectado en ${client.guilds.cache.size} servidores y  ${client.users.cache.size} usuarios.`);
 
-  client.user.setPresence( {
-      activity: {
-          name: `Comandos, Prefijo c. ¡usa c.comandos y mira todo lo que puedo hacer!`,
-          type: "LISTENING"
-      },
-      status: "online"
-   });
+  const status = [`Comandos, Prefijo c. ¡usa c.comandos y mira todo lo que puedo hacer!`,
+                `todo lo que hacen y dicen modo unión soviética`,
+                `${client.guilds.cache.size} servidores, que calidad`,
+                `Estoy divirtiendo a ${client.users.cache.size} usuarios`
+                 ];
 
-});
+		setInterval(() =>{ client.user.setPresence({
+      status: "online",
+      activity: {
+        name: status[Math.floor(Math.random() * status.length)],
+        type: "LISTENING"
+      }
+     }
+     )
+    }, 10000)
+    });
 
 //                              _______
 //           __          ______/______|          __        _________________________
@@ -119,7 +127,6 @@ const embed = new Discord.MessageEmbed()
 
 message.channel.send(embed);
 }
-  //Comando para kickear
   if(command === 'ping') {
     let ping = Math.floor(message.client.ping);
     message.channel.send(":ping_pong: Pong!")
@@ -165,6 +172,33 @@ if (command === 'piropo') {
 
   message.channel.send(embed)
 };
+  if (command === 'mimir') {
+      let mencion = message.mentions.users.first()
+      
+    let imagenes = ['https://i.imgur.com/smNzUbu.png', 'https://cdn.discordapp.com/attachments/783137895728545832/783741192705540097/124398071_3353324081450865_24009699835441979_o.jpg', 'https://cdn.discordapp.com/attachments/783137895728545832/783741189404622858/images.jpg', 'https://th.bing.com/th/id/OIP.x3UnbXjibS6eYyHjw2mu-AHaGi?pid=Api&rs=1']
+    const random = imagenes[Math.floor(Math.random() * imagenes.length)]
+
+    if (!mencion) {
+              const embed = new Discord.MessageEmbed()
+
+    .setTitle(`Parece que ${message.author.username} quiere ir a mimir`)
+    .addField("Dejémoslo mimir tranquilo", "💤")
+    .setImage(random)
+    .setColor('#f2f6ff')
+    .setFooter('Mimir time');
+                message.channel.send(embed);
+    } else {
+                    const embed = new Discord.MessageEmbed()
+    .setTitle(`Parece que ${mencion.username} quiere ir a mimir`)
+    .addField("Dejémoslo mimir tranquilo", "💤")
+    .setImage(random)
+    .setColor('#f2f6ff')
+    .setFooter('Mimir time');
+      
+          message.channel.send(embed);
+    }
+  };
+  
   //Muestra un XD
               if(message.content.indexOf(prefix) !== 0) return;
 if (command === 'xd') {
@@ -192,7 +226,6 @@ let xd = [
   'https://i.imgur.com/COfMDoZ.jpg']
 
 const random = xd[Math.floor(Math.random() * xd.length)]
-0
 const embed = new Discord.MessageEmbed()
   .setTitle('XD')
   .setAuthor(message.author.username)
@@ -268,14 +301,14 @@ if(command === 'avatar'){
 
   if (!miembro) {
       const embed = new Discord.MessageEmbed()
-          .setImage(`${message.author.displayAvatarURL({size: 2048})}`)
+          .setImage(`${message.author.displayAvatarURL({size: 2048, dynamic: true})}`)
           .setColor(0x66b3ff)
           .setFooter(`Avatar de ${message.author.tag}`);
       message.channel.send(embed);
   
   } else {
       const embed = new Discord.MessageEmbed()
-          .setImage(`${miembro.displayAvatarURL({size: 2048})}`)
+          .setImage(miembro.displayAvatarURL({size: 2048, dynamic: true}))
           .setColor(0x66b3ff)
           .setFooter(`Avatar de ${miembro.tag}`);
   
@@ -310,7 +343,7 @@ if(command === 'comandos') {
   .setTitle("<:Discord:778804236733513749> Discord")
   .addField("<a:flecha:779126790312296469> *MI PREFIJO:* <a:flecha2:779127569073045535>", '```C. ```')
   .addField("<a:palomitas:778803320210063431>♦️Comandos informativos", "`comandos`, `miserver`, `avatar`, `invite`, `ping`")
-  .addField("<a:divertido:778803677238132736>♦️Comandos divertidos", "`monigote`, `vaca + (texto)`, `say + (texto)`,`amo`, `nostradamus + (texto)`, `piropo`, `xd`")
+  .addField("<a:divertido:778803677238132736>♦️Comandos divertidos", " `mimir`, `monigote`, `vaca + (texto)`, `say + (texto)`,`amo`, `nostradamus + (texto)`, `piropo`, `xd`")
   .addField("<a:admin:778803282457264128>♦️Comandos de admins", "`kick`, `ban`, `raid`, `usuario`")
   .setFooter("Chancla Bot, versión 1.0, creado por ! Chancla#9149 y TrollfesT#2552")
   .setColor(0x66b3ff)
