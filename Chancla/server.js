@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////Chancla bot codigos//////////////////////////////////////////////
 //       __                    __      __           __     ||   Empezado el: 15/07/2020 en tiempos de COVID -19 //
-//      | |                    | |     | |         | |     ||   Hecho por: ! Chancla#9149                       //
+//      | |                    | |     | |         | |     ||   Hecho por: Chanclex'nt#6759                     //
 //   ___| |__   ____ ___    ___| | ___ | |__   ___ | |_    ||   Hecho en: Venezuela mi patria querida           //
 //  / __| '_ \ / _` | '_ \ / __| |/ _` | '_ \ / _ \| __|   ||   Hecho con: Amor, cariño y mucha dedicación.     //
 // | (__| | | | (_| | | | | (__| | (_| | |_) | (_) | |_    ||   Nota: Con algo de inspiración todos podemos     //
